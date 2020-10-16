@@ -18,7 +18,7 @@ import Chatver2.AppMain;
 /**
  *
  * SendText is an ActionListener based class that will sent a message using socket communication
- * 
+ *
  */
 public class SendText implements ActionListener {
 
@@ -27,7 +27,7 @@ public class SendText implements ActionListener {
     private int puertoEnvio;
     private int myPort;
     private String ip, myIp;
-    
+
     private Logger bitacora = AppMain.bitacora;
 
     /**
@@ -66,7 +66,7 @@ public class SendText implements ActionListener {
         Socket socketOut = null;
 
         try {
-            
+
             System.out.println(puertoEnvio);
             Chatver2.Logics.Package pk = new Chatver2.Logics.Package(Integer.toString(myPort),myIp,Integer.toString(puertoEnvio), frame.campo1.getText());
             socketOut = new Socket(ip, puertoEnvio);
@@ -76,31 +76,31 @@ public class SendText implements ActionListener {
             dataSend.writeObject(pk);
             frame.chat_space.append("Yo: " + frame.campo1.getText() + "\n");
             listch.appendChat(ip+":"+Integer.toString(puertoEnvio), "Yo: " + frame.campo1.getText() + "\n");
-            
+
             bitacora.info("Mensaje enviado");
-            
-        } 
-        catch (IllegalArgumentException e0){
+
+        }
+        catch (IllegalArgumentException e0){ // This occurs if the port number is out of the accepted range.
             bitacora.severe("El puerto esta fuera de rango"+e0.getMessage());
         }
-        catch (ConnectException e1) {
-            
+        catch (ConnectException e1) { // This happens if the user we are trying to connect is offline.
+
             bitacora.severe("Se presento un error ya que el usuario deseado no está conectado"+e1.getMessage());
         }
-        catch (UnknownHostException e2) {
-            
+        catch (UnknownHostException e2) { // This happens if there were incorrect info, such as the ip or the port.
+
             bitacora.severe("No se conoce el usuario destinatario"+e2.getMessage());
         }
-        catch (IOException e3){
-            bitacora.severe("Ocurrió al crear el puerto"+e3.getMessage());
+        catch (IOException e3){ // This happens if there was an error while creating the connection and, by extension, the port.
+            bitacora.severe("Ocurrio al crear el puerto"+e3.getMessage());
         }
         finally{
             if (socketOut != null){
                 try{
                     socketOut.close();
                 }
-                catch (IOException e4){
-                    bitacora.severe("Ocurrió un error al cerrar el puerto"+e4.getMessage());
+                catch (IOException e4){ // This exception detects if the socket didn't close,so it writes it in the .txt.
+                    bitacora.severe("Ocurrio un error al cerrar el puerto"+e4.getMessage());
                 }
             }
         }

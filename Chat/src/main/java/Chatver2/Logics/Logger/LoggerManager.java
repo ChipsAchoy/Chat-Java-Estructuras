@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Anthony Chaves
+ * @author Anthony Chaves and Christopher Castro
  */
 public class LoggerManager {
     public static Logger getBitacora(){
