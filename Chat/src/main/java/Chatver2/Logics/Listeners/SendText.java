@@ -81,18 +81,18 @@ public class SendText implements ActionListener {
 
         }
         catch (IllegalArgumentException e0){ // This occurs if the port number is out of the accepted range.
-            bitacora.severe("El puerto esta fuera de rango"+e0.getMessage());
+            bitacora.severe("El puerto esta fuera de rango: "+e0.getMessage());
         }
         catch (ConnectException e1) { // This happens if the user we are trying to connect is offline.
 
-            bitacora.severe("Se presento un error ya que el usuario deseado no está conectado"+e1.getMessage());
+            bitacora.severe("Se presento un error ya que el usuario deseado no está conectado: "+e1.getMessage());
         }
         catch (UnknownHostException e2) { // This happens if there were incorrect info, such as the ip or the port.
 
-            bitacora.severe("No se conoce el usuario destinatario"+e2.getMessage());
+            bitacora.severe("No se conoce el usuario destinatario: "+e2.getMessage());
         }
         catch (IOException e3){ // This happens if there was an error while creating the connection and, by extension, the port.
-            bitacora.severe("Ocurrio al crear el puerto"+e3.getMessage());
+            bitacora.severe("Ocurrio al crear el puerto: "+e3.getMessage());
         }
         finally{
             if (socketOut != null){
@@ -100,7 +100,7 @@ public class SendText implements ActionListener {
                     socketOut.close();
                 }
                 catch (IOException e4){ // This exception detects if the socket didn't close,so it writes it in the .txt.
-                    bitacora.severe("Ocurrio un error al cerrar el puerto"+e4.getMessage());
+                    bitacora.severe("Ocurrio un error al cerrar el puerto: "+e4.getMessage());
                 }
             }
         }

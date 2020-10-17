@@ -1,21 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Chatver2.Logics.Listeners;
 
+import Chatver2.AppMain;
 import Chatver2.GUI.AppInterface;
 import Chatver2.Logics.ChatsList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
 
 /**
  *
  * Add Contatct is an ActionListener based class which adds a contact to a list (when a JButton is pressed) if it has not been added before
  */
 public class AddContact implements ActionListener {
-
+    private Logger bitacora = AppMain.bitacora;
     private AppInterface frame;
     private ChatsList listch;
     /**
@@ -33,11 +31,15 @@ public class AddContact implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        String key = frame.ip.getText()+":"+frame.port.getText();
-        if (!listch.isIn(key)) {
-            listch.addBoth(key, "Conversacion con: " + frame.port.getText() + "\n");
-            frame.listaContacts.setListData(listch.getContacts().toArray());
+        if (!(frame.ip.getText().equals(""))&&!(frame.port.getText().equals(""))){
+            String key = frame.ip.getText()+":"+frame.port.getText();
+            if (!listch.isIn(key)) {
+                listch.addBoth(key, "Conversacion con: " + frame.port.getText() + "\n");
+                frame.listaContacts.setListData(listch.getContacts().toArray());
+            }
+        }
+        else{
+            bitacora.info("El contacto no es valido");
         }
 
     }

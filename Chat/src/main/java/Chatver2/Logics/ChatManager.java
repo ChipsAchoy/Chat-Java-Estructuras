@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Chatver2.Logics;
 
 import Chatver2.GUI.AppInterface;
@@ -89,7 +84,7 @@ public class ChatManager implements Runnable {
                 ServerSocket servidor = new ServerSocket(puerto);
                 System.out.println(puerto);
                 evento.setPort(puerto);
-                bitacora.info("Se creó el puerto");
+                bitacora.info("Se creo el puerto");
                 Package rec;
                 while (true) { //Checks out if a message has been received
                     socketIn = servidor.accept();
@@ -111,14 +106,14 @@ public class ChatManager implements Runnable {
                 }
             } catch (BindException e) { // If the port is in use or the local request is invalid, this exception
                 // write it in the .txt and updates the port, to locate the correct one.
-                bitacora.info("El puerto esta ocupado"+e.getMessage());
+                bitacora.info("El puerto esta ocupado: "+e.getMessage());
                 puerto++;
             }
             catch (ClassNotFoundException e0){ // This exception occurs when the incorrect class was selected or it was not found.
-                bitacora.severe(e0.getMessage());
+                bitacora.severe("La clase a leer no se encuentra: "+e0.getMessage());
             }
             catch (IOException e1){ // This exception happens if there was an error reading the console
-                bitacora.severe(e1.getMessage());
+                bitacora.severe("Error al leer el dato recibido: "+e1.getMessage());
             }
             finally{
                 if (socketIn != null){
@@ -126,7 +121,7 @@ public class ChatManager implements Runnable {
                         socketIn.close();
                     }
                     catch (IOException e4){ // This exception detects if the socket didn't close,so it writes it in the .txt.
-                        bitacora.severe("Ocurrió un error al cerrar el puerto"+e4.getMessage());
+                        bitacora.severe("Ocurrió un error al cerrar el puerto: "+e4.getMessage());
                     }
                 }
             }

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Chatver2.Logics.Logger;
 
 import java.io.IOException;
@@ -13,11 +9,23 @@ import java.util.logging.Logger;
 /**
  *
  * @author Anthony Chaves and Christopher Castro
+ * Gives a global logger manager that is configurable
  */
 public class LoggerManager {
+    /**
+     * Gets the default logger
+     * @return default logger
+     */
     public static Logger getBitacora(){
         return Logger.getGlobal();
     }
+    /**
+     * Configures a custom logger
+     * @param pkg package where the logger will be operating
+     * @param file file where logs will be written
+     * @param lvl Level that will be allowed
+     * @return the configured logger
+     */
     public static Logger getBitacora(String pkg, String file, Level lvl){
        Logger bitacora = null;
        bitacora = Logger.getLogger(pkg);

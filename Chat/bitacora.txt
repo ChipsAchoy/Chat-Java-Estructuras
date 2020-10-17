@@ -2,25 +2,36 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2020-10-10T13:52:26</date>
-  <millis>1602359546175</millis>
+  <date>2020-10-17T15:59:36</date>
+  <millis>1602971976783</millis>
   <sequence>0</sequence>
   <logger>Chatver2.Logics</logger>
   <level>INFO</level>
   <class>Chatver2.Logics.ChatManager</class>
   <method>run</method>
   <thread>15</thread>
-  <message>Se creó el puerto</message>
+  <message>Se creo el puerto</message>
 </record>
 <record>
-  <date>2020-10-10T13:53:03</date>
-  <millis>1602359583410</millis>
+  <date>2020-10-17T16:00:37</date>
+  <millis>1602972037767</millis>
   <sequence>1</sequence>
   <logger>Chatver2.Logics</logger>
   <level>SEVERE</level>
-  <class>Chatver2.Logics.Listeners.SendText</class>
-  <method>actionPerformed</method>
-  <thread>17</thread>
-  <message>Se presentó un error ya que el usuario deseado no está conectadoConnection refused: connect</message>
+  <class>Chatver2.Logics.Listeners.ListReact</class>
+  <method>valueChanged</method>
+  <thread>16</thread>
+  <message>Puerto invalido: For input string: "125w"</message>
+</record>
+<record>
+  <date>2020-10-17T16:00:37</date>
+  <millis>1602972037900</millis>
+  <sequence>2</sequence>
+  <logger>Chatver2.Logics</logger>
+  <level>SEVERE</level>
+  <class>Chatver2.Logics.Listeners.ListReact</class>
+  <method>valueChanged</method>
+  <thread>16</thread>
+  <message>Puerto invalido: For input string: "125w"</message>
 </record>
 </log>
